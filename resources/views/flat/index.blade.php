@@ -19,7 +19,10 @@
 
                 <div class="card">
                     <div class="card-header">
+                        @if(Auth::user()->isAdmin())
+
                         <a href="{{ route('flat.create') }}" class="btn btn-primary">Добавить</a>
+                        @endif
                     </div>
                     <div class="card-body">
                         @if(Session::has('info'))
@@ -46,12 +49,14 @@
                                 <td>{{ $flat->recomplex->name }}</td>
                                 <td>{{ $flat->totalarea }} </td>
                                 <td>
+                                    @if(Auth::user()->isAdmin())
                                     <a href="{{ route('flat.edit', $flat) }}" class="btn btn-success"><i class="ri-edit-box-line"></i></a>
                                     <form action="{{ route('flat.destroy', $flat) }}" method="post" style="display: contents">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"><i class="ri-delete-bin-3-line"></i></button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

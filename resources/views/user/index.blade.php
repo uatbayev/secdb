@@ -19,7 +19,10 @@
 
                 <div class="card">
                     <div class="card-header">
+                        @if(Auth::user()->isAdmin())
+
                         <a href="{{ route('user.create') }}" class="btn btn-primary">Добавить</a>
+                        @endif
                     </div>
                     <div class="card-body">
                         @if(Session::has('info'))
@@ -50,12 +53,14 @@
                                 <td>{{ $user->gender->name }} </td>
                                 <td>{{ $user->role }} </td>
                                 <td>
-                                    <a href="{{ route('user.edit', $user) }}" class="btn btn-success"><i class="ri-edit-box-line"></i></a>
-                                    <form action="{{ route('user.destroy', $user) }}" method="post" style="display: contents">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"><i class="ri-delete-bin-3-line"></i></button>
-                                    </form>
+                                    @if(Auth::user()->isAdmin())
+                                        <a href="{{ route('user.edit', $user) }}" class="btn btn-success"><i class="ri-edit-box-line"></i></a>
+                                        <form action="{{ route('user.destroy', $user) }}" method="post" style="display: contents">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i class="ri-delete-bin-3-line"></i></button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

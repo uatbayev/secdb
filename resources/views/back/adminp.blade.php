@@ -45,7 +45,12 @@
     <div class="d-flex align-items-center justify-content-between">
         <a href="{{ route('admin') }}" class="logo d-flex align-items-center">
             <img src="{{asset('niceadmin/assets/img/logo.png')}}" alt="">
-            <span class="d-none d-lg-block">Админ</span>
+            @if(Auth::user()->isAdmin())
+                <span class="d-none d-lg-block">Админ</span>
+            @elseif(Auth::user()->isManager())
+                <span class="d-none d-lg-block">Менеджер</span>
+            @endif
+
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -76,7 +81,12 @@
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
                         <h6>{{ Auth::user()->getUserName() }}</h6>
-                        <span>Администратор системы</span>
+                        @if(Auth::user()->isAdmin())
+                            <span>Администратор системы</span>
+                        @elseif(Auth::user()->isManager())
+                            <span>Менеджер системы</span>
+                        @endif
+
                     </li>
                     <li>
                         <hr class="dropdown-divider">

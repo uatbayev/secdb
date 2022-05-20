@@ -37,6 +37,9 @@
                                     <li><a class="dropdown-item" href="{{route('application',Auth::user()->id)}}">Мои записи</a></li>
                                 @elseif(Auth::user()->isUser())
                                 <li><a class="dropdown-item" href="{{route('application',Auth::user()->id)}}">Мои записи</a></li>
+                                @elseif(Auth::user()->isManager())
+                                    <li><a class="dropdown-item" href="{{route('admin')}}">Панель менеджера</a></li>
+                                    <li><a class="dropdown-item" href="{{route('application',Auth::user()->id)}}">Мои записи</a></li>
                                 @endif
                                 <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Выйти</a></li>
                             </ul>

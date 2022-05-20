@@ -23,7 +23,7 @@
                                 <div class="h2 fw-bolder">{{ $recomplex->name }}</div>
                                 <p>{!! $recomplex->description !!}</p>
                                 <a class="stretched-link text-decoration-none" href="{{ route('page') }}">
-                                    Артқа
+                                    Назад
                                     <i class="bi bi-arrow-left"></i>
                                 </a>
                             </div>

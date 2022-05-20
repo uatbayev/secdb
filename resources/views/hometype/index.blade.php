@@ -19,7 +19,9 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{ route('hometype.create') }}" class="btn btn-primary">Назад</a>
+                        @if(Auth::user()->isAdmin())
+                        <a href="{{ route('hometype.create') }}" class="btn btn-primary">Добавить</a>
+                        @endif
                     </div>
                     <div class="card-body">
                         @if(Session::has('info'))
@@ -42,12 +44,14 @@
                                 <th scope="row">{{ $k+1 }}</th>
                                 <td>{{ $hometype->name }}</td>
                                 <td>
+                                    @if(Auth::user()->isAdmin())
                                     <a href="{{ route('hometype.edit', $hometype) }}" class="btn btn-success"><i class="ri-edit-box-line"></i></a>
                                     <form action="{{ route('hometype.destroy', $hometype) }}" method="post" style="display: contents">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"><i class="ri-delete-bin-3-line"></i></button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

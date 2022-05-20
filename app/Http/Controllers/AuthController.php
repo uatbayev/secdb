@@ -21,7 +21,7 @@ class AuthController extends Controller
             'firstname'=>'required',
             'tel'=>'required',
             'birthdate'=>'required|date',
-            'iin'=>'required',
+            'iin'=>'required|numeric|min:12|max:12',
             'address'=>'required',
             'gender_id'=>'required|not_in:0',
         ]);

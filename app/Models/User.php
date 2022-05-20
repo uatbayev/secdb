@@ -46,6 +46,9 @@ class User extends Authenticatable
     public function isUser() {
         return $this->role === 'user';
     }
+    public function isManager() {
+        return $this->role === 'manager';
+    }
 
     public function getUserName(){
         return "{$this->lastname} {$this->firstname}";

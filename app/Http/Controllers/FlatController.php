@@ -144,6 +144,6 @@ class FlatController extends Controller
         $user_flat_id=$request->user_flat_id;
         $status_id=$request->status_id;
         DB::update('update users_flats set status_id=? where id=?', [$status_id, $user_flat_id]);
-        return redirect()->route('flat_list')->with('info', 'Сәтті өңделді!');
+        return redirect()->route('flat_list')->with('info', 'Редактировано успешно!');
     }
 }
